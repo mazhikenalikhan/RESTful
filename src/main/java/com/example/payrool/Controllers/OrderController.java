@@ -1,5 +1,10 @@
-package com.example.payrool;
+package com.example.payrool.Controllers;
 
+import com.example.payrool.Assemblers.OrderModelAssembler;
+import com.example.payrool.Databases.OrderRepository;
+import com.example.payrool.Entities.Order;
+import com.example.payrool.Exceptions.OrderNotFoundException;
+import com.example.payrool.Entities.Status;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.MediaTypes;
@@ -16,6 +21,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
+public
 class OrderController {
 
     private final OrderRepository orderRepository;
@@ -28,7 +34,7 @@ class OrderController {
     }
 
     @GetMapping("/orders")
-    CollectionModel<EntityModel<Order>> all() {
+    public CollectionModel<EntityModel<Order>> all() {
 
         List<EntityModel<Order>> orders = orderRepository.findAll().stream() //
                 .map(assembler::toModel) //
@@ -39,7 +45,7 @@ class OrderController {
     }
 
     @GetMapping("/orders/{id}")
-    EntityModel<Order> one(@PathVariable Long id) {
+    public EntityModel<Order> one(@PathVariable Long id) {
 
         Order order = orderRepository.findById(id) //
                 .orElseThrow(() -> new OrderNotFoundException(id));
@@ -58,7 +64,7 @@ class OrderController {
                 .body(assembler.toModel(newOrder));
     }
     @DeleteMapping("/orders/{id}/cancel")
-    ResponseEntity<?> cancel(@PathVariable Long id) {
+    public ResponseEntity<?> cancel(@PathVariable Long id) {
 
         Order order = orderRepository.findById(id) //
                 .orElseThrow(() -> new OrderNotFoundException(id));
@@ -76,7 +82,7 @@ class OrderController {
                         .withDetail("You can't cancel an order that is in the " + order.getStatus() + " status"));
     }
     @PutMapping("/orders/{id}/complete")
-    ResponseEntity<?> complete(@PathVariable Long id) {
+    public ResponseEntity<?> complete(@PathVariable Long id) {
 
         Order order = orderRepository.findById(id) //
                 .orElseThrow(() -> new OrderNotFoundException(id));

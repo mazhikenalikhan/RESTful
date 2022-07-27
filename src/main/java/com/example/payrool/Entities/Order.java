@@ -1,19 +1,19 @@
-package com.example.payrool;
+package com.example.payrool.Entities;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "CUSTOMER_ORDER")
 @Getter
 @Setter
+public
 class Order {
 
     private @Id @GeneratedValue Long id;
@@ -21,7 +21,7 @@ class Order {
     private String description;
     private Status status;
 
-    Order(String description, Status status) {
+    public Order(String description, Status status) {
 
         this.description = description;
         this.status = status;

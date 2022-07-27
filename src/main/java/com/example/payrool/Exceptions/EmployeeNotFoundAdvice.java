@@ -1,4 +1,4 @@
-package com.example.payrool;
+package com.example.payrool.Exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

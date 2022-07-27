@@ -1,4 +1,4 @@
-package com.example.payrool;
+package com.example.payrool.Entities;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +12,7 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
+public
 class Employee {
 
     private @Id @GeneratedValue Long id;
@@ -19,7 +20,7 @@ class Employee {
     private String lastName;
     private String role;
 
-    Employee(String firstName, String lastName, String role) {
+    public Employee(String firstName, String lastName, String role) {
 
         this.firstName = firstName;
         this.lastName = lastName;

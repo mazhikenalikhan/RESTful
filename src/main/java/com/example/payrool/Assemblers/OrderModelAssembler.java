@@ -1,12 +1,17 @@
-package com.example.payrool;
+package com.example.payrool.Assemblers;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
-
+import com.example.payrool.Controllers.OrderController;
+import com.example.payrool.Entities.Order;
+import com.example.payrool.Entities.Status;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 @Component
+public
 class OrderModelAssembler implements RepresentationModelAssembler<Order, EntityModel<Order>> {
 
     @Override
